@@ -24,11 +24,12 @@ class CatboardBanner: ExtraView {
         self.addSubview(self.catSwitch)
         self.addSubview(self.catLabel)
         
-        self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
+        self.catSwitch.isOn = false
         self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         self.catSwitch.addTarget(self, action: #selector(CatboardBanner.respondToSwitch), for: UIControlEvents.valueChanged)
-        
-        self.updateAppearance()
+        self.catSwitch.isHidden=true
+        print("test")
+        //self.updateAppearance()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -44,12 +45,12 @@ class CatboardBanner: ExtraView {
 
         self.catSwitch.center = self.center
         self.catLabel.center = self.center
-        self.catLabel.frame.origin = CGPoint(x: self.catSwitch.frame.origin.x + self.catSwitch.frame.width + 8, y: self.catLabel.frame.origin.y)
+        self.catLabel.frame.origin = CGPoint(x:  8, y: self.catLabel.frame.origin.y)
     }
     
     func respondToSwitch() {
         UserDefaults.standard.set(self.catSwitch.isOn, forKey: kCatTypeEnabled)
-        self.updateAppearance()
+        //self.updateAppearance()
     }
     
     func updateAppearance() {
@@ -61,6 +62,15 @@ class CatboardBanner: ExtraView {
             self.catLabel.text = "🐱"
             self.catLabel.alpha = 0.5
         }
+        
+        self.catLabel.sizeToFit()
+    }
+    
+    func setTextAtTop( text:String) {
+        
+        self.catLabel.text = text
+        self.catLabel.alpha = 1
+        self.catLabel.backgroundColor=UIColor.red
         
         self.catLabel.sizeToFit()
     }

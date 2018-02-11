@@ -9,27 +9,51 @@
 import UIKit
 
 /*
-This is the demo keyboard. If you're implementing your own keyboard, simply follow the example here and then
-set the name of your KeyboardViewController subclass in the Info.plist file.
-*/
+ This is the demo keyboard. If you're implementing your own keyboard, simply follow the example here and then
+ set the name of your KeyboardViewController subclass in the Info.plist file.
+ */
 
 let kCatTypeEnabled = "kCatTypeEnabled"
 
 class Catboard: KeyboardViewController {
-    
+    var lastChars = ""
     let takeDebugScreenshot: Bool = false
-    
+    var banner:CatboardBanner?=nil
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         UserDefaults.standard.register(defaults: [kCatTypeEnabled: true])
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func keyPressed(_ key: Key) {
         let textDocumentProxy = self.textDocumentProxy
+        
+        lastChars.append(key.lowercaseOutput!)
+        print("HELLO")
+        
+        if lastChars.contains("just") {
+            print("exists")
+            lastChars = String(lastChars.prefix(lastChars.count-4))
+            print(lastChars)
+            banner?.setTextAtTop(text: "this is a longer message #1")
+        }
+        if lastChars.contains("i'm sorry"){
+            print("exists")
+            lastChars=String(lastChars.prefix(lastChars.count-9))
+            print(lastChars)
+            banner?.setTextAtTop(text: "this is a longer message #2")
+        }
+        if lastChars.contains("sorry"){
+            print("exits")
+            lastChars=String(lastChars.prefix(lastChars.count-5))
+            print(lastChars)
+            banner?.setTextAtTop(text: "this is a longer message #3")
+        }
+        
+        print("%%%%%%%%%%%%%%%%%%%%%%%%% KEY: " + key.uppercaseOutput!)
         
         let keyOutput = key.outputForCase(self.shiftState.uppercase())
         
@@ -58,7 +82,7 @@ class Catboard: KeyboardViewController {
                     textDocumentProxy.insertText(keyOutput)
                     return
                 }
-
+                
                 textDocumentProxy.insertText("\(randomCat())")
                 textDocumentProxy.insertText(" ")
                 textDocumentProxy.insertText(keyOutput)
@@ -96,7 +120,8 @@ class Catboard: KeyboardViewController {
     }
     
     override func createBanner() -> ExtraView? {
-        return CatboardBanner(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
+        banner=CatboardBanner(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
+        return banner
     }
     
     func takeScreenshotDelay() {
@@ -144,4 +169,13 @@ func randomCat() -> String {
     let character = cats[index]
     
     return String(character)
+}
+
+extension String {
+    func contains(find: String) -> Bool{
+        return self.range(of: find) != nil
+    }
+    func containsIgnoringCase(find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
 }
