@@ -20,7 +20,7 @@ class Catboard: KeyboardViewController {
     let takeDebugScreenshot: Bool = false
     var banner:CatboardBanner?=nil
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        UserDefaults.standard.register(defaults: [kCatTypeEnabled: true])
+        UserDefaults.standard.register(defaults: [kCatTypeEnabled: false])
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

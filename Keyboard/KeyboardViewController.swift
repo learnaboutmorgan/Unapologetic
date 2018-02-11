@@ -127,7 +127,7 @@ class KeyboardViewController: UIInputViewController {
     
     func defaultsChanged(_ notification: Notification) {
         //let defaults = notification.object as? NSUserDefaults
-        self.updateKeyCaps(self.shiftState.uppercase())
+        //self.updateKeyCaps(self.shiftState.uppercase())
     }
     
     // without this here kludge, the height constraint for the keyboard does not work for some reason
@@ -146,7 +146,7 @@ class KeyboardViewController: UIInputViewController {
             self.view.addConstraints([a, b, c, d])
             
             self.kludge = kludge
-        }
+        }b
     }
     
     /*
