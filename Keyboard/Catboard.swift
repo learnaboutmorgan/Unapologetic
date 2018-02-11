@@ -38,13 +38,13 @@ class Catboard: KeyboardViewController {
             print("exists")
             lastChars = String(lastChars.prefix(lastChars.count-4))
             print(lastChars)
-            banner?.setTextAtTop(text: "this is a longer message #1")
+            banner?.setTextAtTop(text: "🙅🏽‍♀️❌🙅🏽‍♀️ Be assertive! 🙅🏽‍♀️❌🙅🏽‍♀️")
         }
          else if lastChars.contains("i'm sorry"){
             print("exists")
             lastChars=String(lastChars.prefix(lastChars.count-9))
             print(lastChars)
-            banner?.setTextAtTop(text: "this is a longer message #2")
+            banner?.setTextAtTop(text: "🙅🏽‍♀️❌🙅🏽‍♀️ WHY IS THIS NOT WORKING 🙅🏽‍♀️❌🙅🏽‍♀️")
         }
         else if lastChars.contains("sorry"){
             print("exits")
