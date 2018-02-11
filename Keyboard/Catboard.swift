@@ -40,17 +40,19 @@ class Catboard: KeyboardViewController {
             print(lastChars)
             banner?.setTextAtTop(text: "this is a longer message #1")
         }
-        if lastChars.contains("i'm sorry"){
+         else if lastChars.contains("i'm sorry"){
             print("exists")
             lastChars=String(lastChars.prefix(lastChars.count-9))
             print(lastChars)
             banner?.setTextAtTop(text: "this is a longer message #2")
         }
-        if lastChars.contains("sorry"){
+        else if lastChars.contains("sorry"){
             print("exits")
             lastChars=String(lastChars.prefix(lastChars.count-5))
             print(lastChars)
-            banner?.setTextAtTop(text: "this is a longer message #3")
+            banner?.setTextAtTop(text: "🙅🏽‍♀️❌🙅🏽‍♀️ Be assertive! 🙅🏽‍♀️❌🙅🏽‍♀️")
+        } else {
+            banner?.setTextAtTop(text:"👌🏽")
         }
         
         print("%%%%%%%%%%%%%%%%%%%%%%%%% KEY: " + key.uppercaseOutput!)
@@ -160,7 +162,7 @@ class Catboard: KeyboardViewController {
 }
 
 func randomCat() -> String {
-    let cats = "🐱😺😸😹😽😻😿😾😼🙀"
+    let cats = "👌🏽"
     
     let numCats = cats.characters.count
     let randomCat = arc4random() % UInt32(numCats)

@@ -24,7 +24,7 @@ class CatboardBanner: ExtraView {
         self.addSubview(self.catSwitch)
         self.addSubview(self.catLabel)
         
-        self.catSwitch.isOn = false
+        self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
         self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         self.catSwitch.addTarget(self, action: #selector(CatboardBanner.respondToSwitch), for: UIControlEvents.valueChanged)
         self.catSwitch.isHidden=true
@@ -70,7 +70,8 @@ class CatboardBanner: ExtraView {
         
         self.catLabel.text = text
         self.catLabel.alpha = 1
-        self.catLabel.backgroundColor=UIColor.red
+        self.catLabel.backgroundColor=UIColor.clear
+     
         
         self.catLabel.sizeToFit()
     }

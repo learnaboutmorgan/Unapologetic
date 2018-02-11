@@ -146,7 +146,7 @@ class KeyboardViewController: UIInputViewController {
             self.view.addConstraints([a, b, c, d])
             
             self.kludge = kludge
-        }b
+        }
     }
     
     /*
