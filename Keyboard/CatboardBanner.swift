@@ -71,7 +71,7 @@ class CatboardBanner: ExtraView {
         self.catLabel.text = text
         self.catLabel.alpha = 1
         self.catLabel.backgroundColor=UIColor.clear
-     
+        self.catLabel.textAlignment = NSTextAlignment.center
         
         self.catLabel.sizeToFit()
     }

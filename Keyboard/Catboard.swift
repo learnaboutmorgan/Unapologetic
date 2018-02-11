@@ -44,7 +44,7 @@ class Catboard: KeyboardViewController {
             print("exists")
             lastChars=String(lastChars.prefix(lastChars.count-9))
             print(lastChars)
-            banner?.setTextAtTop(text: "🙅🏽‍♀️❌🙅🏽‍♀️ WHY IS THIS NOT WORKING 🙅🏽‍♀️❌🙅🏽‍♀️")
+            banner?.setTextAtTop(text: "🙅🏽‍♀️❌🙅🏽‍♀️ Be assertive! 🙅🏽‍♀️❌🙅🏽‍♀️")
         }
         else if lastChars.contains("sorry"){
             print("exits")
